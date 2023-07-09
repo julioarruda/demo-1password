@@ -17,7 +17,7 @@ jobs:
         env:
           OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_TOKEN }}
           DEMO_USERNAME: op://demo-dev/demo/username
-          DEMO_PASSWORD: op://demo-dev/demo/pwssword
+          DEMO_PASSWORD: op://demo-dev/demo/password
 
       - name: Print masked secret
         run: |
