@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Load secret
+        uses: 1password/load-secrets-action@v1
+        with:
+          # Export loaded secrets as environment variables
+          export-env: true
+        env:
+          OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_TOKEN }}
+          DEMO_USERNAME: op://demo-dev/demo/username
+          DEMO_PASSWORD: op://demo-dev/demo/pwssword
+
+      - name: Print masked secret
+        run: |
+          echo "Secret: $DEMO_USERNAME"
+          echo "Secret: $DEMO_PASSWORD"
